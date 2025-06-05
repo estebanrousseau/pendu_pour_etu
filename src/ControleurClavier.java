@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 /**
  * Controleur du clavier
  */
-public class ControleurLettres implements EventHandler<ActionEvent> {
+public class ControleurClavier implements EventHandler<ActionEvent> {
 
     /**
      * modèle du jeu
@@ -21,8 +21,9 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
      * @param modelePendu modèle du jeu
      * @param vuePendu vue du jeu
      */
-    ControleurLettres(MotMystere modelePendu, Pendu vuePendu){
-        // A implémenter
+    ControleurClavier(MotMystere modelePendu, Pendu vuePendu){
+        this.modelePendu = modelePendu;
+        this.vuePendu = vuePendu;
     }
 
     /**
@@ -32,6 +33,21 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
      */
     @Override
     public void handle(ActionEvent actionEvent) {
-        // A implémenter
+   
+        Button bouton = (Button) actionEvent.getSource();
+        String lettre = bouton.getText();
+        modelePendu.essaiLettre(lettre.charAt(0));
+        
+        vuePendu.majAffichage();
+        bouton.setDisable(true);
+
+      
+        if (modelePendu.gagne()) {
+            this.vuePendu.popUpMessageGagne();
+        } else if (modelePendu.perdu()) {
+            this.vuePendu.popUpMessagePerdu();
+   
+        }
+
     }
 }

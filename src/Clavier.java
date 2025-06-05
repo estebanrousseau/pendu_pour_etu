@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+
 /**
  * Génère la vue d'un clavier et associe le contrôleur aux touches
  * le choix ici est d'un faire un héritié d'un TilePane
@@ -25,8 +26,21 @@ public class Clavier extends TilePane{
      * @param actionTouches le contrôleur des touches
      * @param tailleLigne nombre de touches par ligne
      */
-    public Clavier(String touches, EventHandler<ActionEvent> actionTouches) {
-        // A implémenter
+    public Clavier(String touches, EventHandler<ActionEvent> actionTouches, int tailleLigne) {
+        this.clavier = new ArrayList<>();
+        setVgap(5);
+        setHgap(5);
+        setPadding(new Insets(10));
+        setAlignment(Pos.CENTER);
+        setPrefColumns(tailleLigne);
+
+        for(char carac: touches.toCharArray()){
+            Button boyton = new Button(String.valueOf(carac));
+            boyton.setOnAction(actionTouches);
+            boyton.setShape(new Circle(1.5));
+            this.clavier.add(boyton);
+            this.getChildren().add(boyton);
+        }
     }
 
     /**
@@ -34,6 +48,12 @@ public class Clavier extends TilePane{
      * @param touchesDesactivees une chaine de caractères contenant la liste des touches désactivées
      */
     public void desactiveTouches(Set<String> touchesDesactivees){
-        // A implémenter
+     
+        for(Button b : this.clavier){
+            b.setDisable(touchesDesactivees.contains(b.getText()));;
+            
+        }
+    
+        
     }
 }

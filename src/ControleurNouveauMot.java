@@ -6,7 +6,7 @@ import java.util.Optional;
 /**
  * Contrôleur à activer lorsque l'on clique sur le bouton Accueil
  */
-public class RetourAccueil implements EventHandler<ActionEvent> {
+public class ControleurNouveauMot implements EventHandler<ActionEvent> {
     /**
      * modèle du jeu
      */
@@ -20,7 +20,7 @@ public class RetourAccueil implements EventHandler<ActionEvent> {
      * @param modelePendu modèle du jeu
      * @param vuePendu vue du jeu
      */
-    public RetourAccueil(MotMystere modelePendu, Pendu vuePendu) {
+    public ControleurNouveauMot(MotMystere modelePendu, Pendu vuePendu) {
         this.modelePendu = modelePendu;
         this.vuePendu = vuePendu;
     }
@@ -32,14 +32,18 @@ public class RetourAccueil implements EventHandler<ActionEvent> {
      */
     @Override
     public void handle(ActionEvent actionEvent) {
+
         Optional<ButtonType> reponse = this.vuePendu.popUpPartieEnCours().showAndWait(); // on lance la fenêtre popup et on attends la réponse
         if (reponse.isPresent() && reponse.get().equals(ButtonType.YES)){
             System.out.println("Ok !");
-            vuePendu.modeAccueil();
+            modelePendu.setMotATrouver();;
+            vuePendu.modeJeu();
+            vuePendu.majAffichage();
         }
         else{
             System.out.println("D'ac !");
         }
     }    
+    
 
 }

@@ -3,6 +3,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
@@ -19,6 +20,8 @@ public class Chronometre extends Text{
      * la fenêtre de temps
      */
     private KeyFrame keyFrame;
+
+    private Text tps;
     /**
      * le contrôleur associé au chronomètre
      */
@@ -30,7 +33,8 @@ public class Chronometre extends Text{
      * Ce constructeur créer la Timeline, la KeyFrame et le contrôleur
      */
     public Chronometre(){
-        // A implémenter
+        this.tps = new Text("0");
+
     }
 
     /**
@@ -46,7 +50,7 @@ public class Chronometre extends Text{
      * Permet de démarrer le chronomètre
      */
     public void start(){
-        // A implémenter
+        HBox root = new HBox(5);
     }
 
     /**

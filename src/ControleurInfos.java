@@ -21,6 +21,6 @@ public class ControleurInfos implements EventHandler<ActionEvent> {
      */
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.appliPendu.popUpReglesDuJeu().showAndWait();
+        this.appliPendu.popUpReglesDuJeu();
     }
 }

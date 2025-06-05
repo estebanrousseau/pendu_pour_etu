@@ -1,4 +1,7 @@
 import java.util.Set;
+
+import javafx.scene.control.ProgressBar;
+
 import java.util.HashSet;
 
 /**
